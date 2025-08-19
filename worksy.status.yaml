@@ -1,0 +1,47 @@
+
+---
+
+## 🔹 3. Sample `worksy.status.yaml`
+```yaml
+app: WorkSy
+frontend: Angular 20
+backend: Laravel 10
+auth: sanctum
+
+frontend_modules:
+  public:
+    landing: done
+    search: wip
+    workerProfile: todo
+  auth:
+    login: todo
+    register: todo
+  customer:
+    dashboard: todo
+    bookings: todo
+  worker:
+    dashboard: todo
+    jobs: todo
+    earnings: todo
+
+backend_modules:
+  auth:
+    sanctum_setup: wip
+    register: todo
+    login: todo
+  api:
+    workers: todo
+    bookings: todo
+    reviews: todo
+
+infra:
+  ci_cd:
+    angular_build: done
+    laravel_build: todo
+  hosting:
+    frontend: pending
+    backend: pending
+
+notes:
+  - dev proxy configured in Angular
+  - need to decide prod domains

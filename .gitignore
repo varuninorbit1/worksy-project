@@ -1,0 +1,11 @@
+# Ignore everything by default
+*
+
+# Allow only these files
+!.gitignore
+!README.md
+!worksy.status.yaml
+
+# (Optional) allow any scripts you want to keep
+!dev.sh
+!dev.ps1

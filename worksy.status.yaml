@@ -1,47 +1,59 @@
-
----
-
-## 🔹 3. Sample `worksy.status.yaml`
-```yaml
 app: WorkSy
-frontend: Angular 20
-backend: Laravel 10
-auth: sanctum
+last_updated: 2025-08-19T13:45:00+05:30
+
+repos:
+  web: https://github.com/varuninorbit1/worksy-web
+  api: https://github.com/varuninorbit1/worksy-api
+branches:
+  web: main
+  api: main
+commits:
+  web: ""   # fill with: git rev-parse --short HEAD
+  api: ""
+
+stack:
+  frontend: Angular 20
+  backend: Laravel 10
+  auth: sanctum
+
+env:
+  dev:
+    api_base: "http://localhost:8000/api"
+    web_base: "http://localhost:4200"
+    sanctum_stateful_domains: "localhost:4200"
+    session_domain: "localhost"
+  prod:
+    api_base: ""      # e.g., https://api.worksy.in/api
+    web_base: ""      # e.g., https://app.worksy.in
+    sanctum_stateful_domains: ""   # e.g., app.worksy.in
+    session_domain: ""             # e.g., .worksy.in
 
 frontend_modules:
-  public:
-    landing: done
-    search: wip
-    workerProfile: todo
-  auth:
-    login: todo
-    register: todo
-  customer:
-    dashboard: todo
-    bookings: todo
-  worker:
-    dashboard: todo
-    jobs: todo
-    earnings: todo
+  public:       { landing: done, search: wip, workerProfile: todo }
+  auth:         { login: todo, register: todo }
+  customer:     { dashboard: todo, bookings: todo }
+  worker:       { dashboard: todo, jobs: todo, earnings: todo }
 
 backend_modules:
-  auth:
-    sanctum_setup: wip
-    register: todo
-    login: todo
+  auth:         { sanctum_setup: wip, register: todo, login: todo, logout: todo }
   api:
-    workers: todo
-    bookings: todo
-    reviews: todo
+    workers:    { list: todo, show: todo, create: todo, update: todo }
+    bookings:   { create: todo, listMine: todo, updateStatus: todo }
+    reviews:    { create: todo, listForWorker: todo }
 
 infra:
-  ci_cd:
-    angular_build: done
-    laravel_build: todo
-  hosting:
-    frontend: pending
-    backend: pending
+  ci_cd:        { angular_build: done, laravel_build: todo }
+  hosting:      { frontend: pending, backend: pending }
+  proxy:        { angular_to_laravel: todo }
+
+definitions_of_done:
+  frontend_item: ["component + route wired", "service connected to api", "basic unit test", "docs/README note"]
+  backend_item:  ["route + controller", "request validation", "feature test (happy path)", "OpenAPI doc updated"]
 
 notes:
-  - dev proxy configured in Angular
-  - need to decide prod domains
+  - dev proxy configured in Angular?
+  - decide production domains/subdomains
+  - generate OpenAPI spec from Laravel for typed SDK in Angular
+risks:
+  - auth flow decisions can block UI wiring
+blockers: []
